@@ -1,0 +1,36 @@
+{
+  "name": "unit",
+  "version": "1.0.0",
+  "description": "poc purpoose",
+  "scripts": {
+    "test": "mocha tests/*.test.js --reporter mocha-junit-reporter --reporter-options mochaFile=./test-results/test-results.xml",
+    "cover:unit": "nyc --all npm run test",
+    "cover:report": "nyc report --reporter=lcov --reporter=text --report-dir='./test-results'",
+    "test:coverage": "npm run cover:report && npm run test"
+  },
+  "author": "lichader",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "4.2.0",
+    "expect": "26.6.2",
+    "mocha": "8.2.1",
+    "mocha-junit-reporter": "2.0.0",
+    "nyc": "15.1.0",
+    "sinon": "9.2.4"
+  },
+  "nyc": {
+    "all": true,
+    "cache": false,
+    "include": [
+      "src/*.js"
+    ],
+    "exclude": [
+      "tests/*.test.js"
+    ],
+    "check-coverage": true,
+    "branches": 90,
+    "lines": 90,
+    "functions": 90,
+    "statements": 90
+  }
+}
